@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "rxjava2-chirper-client"
+		},
+		{
+			"path": "lagom-java-chirper-example/deploy/compose"
+		},
+		{
+			"path": "webflux-chirper-client"
+		}
+	],
+	"settings": {}
+}
