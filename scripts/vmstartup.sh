@@ -64,12 +64,11 @@ for x in rxjava2-chirper-client webflux-chirper-client; do
   cd ~
 done
 
-# clean up old imagesre
+# clean up old images
 docker system prune -f
 
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-# run vscode
-/usr/bin/code
-
-
-echo 'system is up, use vagrant ssh to access it.'
+if [ -z "${DOCKER_MACHINE}" ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+  # run vscode
+  /usr/bin/code
+fi
