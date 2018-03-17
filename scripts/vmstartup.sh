@@ -16,7 +16,7 @@ cd ~
 code --install-extension EditorConfig.editorconfig
 
 # Install node.js
-wget --nv -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install --lts
@@ -27,10 +27,7 @@ git remote set-url origin https://github.com/ebullient/lagom-java-chirper-exampl
 git fetch --all
 git reset --hard origin/master
 
-~/lagom-java-chirper-example/deploy/compose/run.sh env
 eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)
-alias 
-
 echo "eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)" >> ~/.bashrc
 
 # Start chirper in the background
@@ -41,20 +38,34 @@ think-run start
 think-run wait
 
 # checkout akka-streams-chirper-client
-git clone https://github.com/mckeeh3/akka-streams-chirper-client.git
-cd ~/akka-streams-chirper-client
+if [ ! -d akka-streams-chirper-client ]; then
+  git clone https://github.com/mckeeh3/akka-streams-chirper-client.git
+else
+  cd ~/akka-streams-chirper-client
+  git fetch --all
+  git reset --hard origin/master
+fi
+
+# checkout akka-streams-chirper-client
+if [ ! -d wallet-exercise ]; then
+  git clone https://github.com/kikiya/wallet-exercise.git
+else
+  cd ~/wallet-exercise
+  git fetch --all
+  git reset --hard origin/master
+fi
 
 # update other existing github repos
 cd ~
-for x in  rxjava2-chirper-client webflux-chirper-client; do
+for x in rxjava2-chirper-client webflux-chirper-client; do
   cd $x
   git fetch --all
   git reset --hard origin/master
   cd ~
 done
 
-# clean up old images
-docker system prune
+# clean up old imagesre
+docker system prune -f
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 # run vscode
