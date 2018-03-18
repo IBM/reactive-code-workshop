@@ -1,4 +1,3 @@
-
 #!/bin/bash
 shopt -s expand_aliases
 
@@ -21,11 +20,27 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install --lts
 
-# switch to ebullient fork of lagom-java-chirper-example
-cd ~/lagom-java-chirper-example
-git remote set-url origin https://github.com/ebullient/lagom-java-chirper-example.git
-git fetch --all
-git reset --hard origin/master
+# update existing github repos to ebullient fork
+cd ~
+for x in lagom-java-chirper-example rxjava2-chirper-client webflux-chirper-client; do
+  cd $x
+  git remote set-url origin https://github.com/ebullient/$x.git
+  git fetch --all
+  git reset --hard origin/master
+  cd ~
+done
+
+# Update directories for newer projects
+for x in wallet-exercise akka-streams-chirper-client; do
+  if [ -d ~/$x ]; then
+    cd ~/$x
+    git fetch --all
+    git reset --hard origin/master
+  else
+    cd ~
+    git clone https://github.com/kikiya/$x.git
+  fi
+done
 
 eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)
 if ! grep "deploy/compose/run.sh env" ~/.bashrc; then
@@ -38,35 +53,6 @@ think-compose build proxy
 sbt -DbuildTarget=compose clean docker:publishLocal
 think-run start
 think-run wait
-
-# checkout akka-streams-chirper-client
-if [ -d ~/akka-streams-chirper-client ]; then
-  cd ~/akka-streams-chirper-client
-  git fetch --all
-  git reset --hard origin/master
-else
-  cd ~
-  git clone https://github.com/kikiya/akka-streams-chirper-client.git
-fi
-
-# checkout akka-streams-chirper-client
-if [ -d ~/wallet-exercise ]; then
-  cd ~/wallet-exercise
-  git fetch --all
-  git reset --hard origin/master
-else
-  cd ~
-  git clone https://github.com/kikiya/wallet-exercise.git
-fi
-
-# update other existing github repos
-cd ~
-for x in rxjava2-chirper-client webflux-chirper-client; do
-  cd $x
-  git fetch --all
-  git reset --hard origin/master
-  cd ~
-done
 
 # clean up old images
 docker system prune -f
