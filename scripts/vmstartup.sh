@@ -46,7 +46,7 @@ if [ -d ~/akka-streams-chirper-client ]; then
   git reset --hard origin/master
 else
   cd ~
-  git clone https://github.com/mckeeh3/akka-streams-chirper-client.git
+  git clone https://github.com/kikiya/akka-streams-chirper-client.git
 fi
 
 # checkout akka-streams-chirper-client
