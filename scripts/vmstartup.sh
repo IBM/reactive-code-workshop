@@ -28,7 +28,9 @@ git fetch --all
 git reset --hard origin/master
 
 eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)
-echo 'eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)' >> ~/.bashrc
+if ! grep "deploy/compose/run.sh env" ~/.bashrc; then
+  echo 'eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)' >> ~/.bashrc
+fi
 
 # Start chirper in the background
 think-compose pull
@@ -38,21 +40,23 @@ think-run start
 think-run wait
 
 # checkout akka-streams-chirper-client
-if [ ! -d akka-streams-chirper-client ]; then
-  git clone https://github.com/mckeeh3/akka-streams-chirper-client.git
-else
+if [ -d ~/akka-streams-chirper-client ]; then
   cd ~/akka-streams-chirper-client
   git fetch --all
   git reset --hard origin/master
+else
+  cd ~
+  git clone https://github.com/mckeeh3/akka-streams-chirper-client.git
 fi
 
 # checkout akka-streams-chirper-client
-if [ ! -d wallet-exercise ]; then
-  git clone https://github.com/kikiya/wallet-exercise.git
-else
+if [ -d ~/wallet-exercise ]; then
   cd ~/wallet-exercise
   git fetch --all
   git reset --hard origin/master
+else
+  cd ~
+  git clone https://github.com/kikiya/wallet-exercise.git
 fi
 
 # update other existing github repos
