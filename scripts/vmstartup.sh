@@ -28,7 +28,7 @@ git fetch --all
 git reset --hard origin/master
 
 eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)
-echo "eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)" >> ~/.bashrc
+echo 'eval $(~/lagom-java-chirper-example/deploy/compose/run.sh env)' >> ~/.bashrc
 
 # Start chirper in the background
 think-compose pull
