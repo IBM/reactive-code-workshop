@@ -8,7 +8,7 @@ Find the `akka-streams-chirper-client` folder
 sbt should still be running in the Terminal window for the akka exercises 
 
         > nextExercise
-        > pollSolution
+        > pullSolution
         > reload
         > man e 
 
