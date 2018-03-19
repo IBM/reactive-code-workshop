@@ -86,5 +86,5 @@ In order to stop the main, press any key.
 
 **Keep this terminal window open for the next exercise.** Create a new Terminal window for RxJava part 2.
 
-Back to [the top](README.md)  
-Onward to [Reactive Events](ReactiveEventSource.md)
+Back to [the top](../README.md)  
+Onward to [Reactive Events](../ReactiveEventSource.md)
