@@ -1,14 +1,17 @@
 {
-	"folders": [
-		{
-			"path": "rxjava2-chirper-client"
-		},
-		{
-			"path": "lagom-java-chirper-example/deploy/compose"
-		},
-		{
-			"path": "webflux-chirper-client"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "akka-streams-chirper-client"
+    },
+    {
+      "path": "rxjava2-chirper-client"
+    },
+    {
+      "path": "webflux-chirper-client"
+    },
+    {
+      "path": "wallet-exercise"
+    }
+  ],
+  "settings": {}
 }

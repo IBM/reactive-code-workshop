@@ -1,5 +1,4 @@
-# reactive-code-workshop
-Think 2018: Reactive Java? Let us count the ways!
+# Think 2018: Reactive Java? Let us count the ways!
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -57,8 +56,9 @@ Reactive systems
 
 ## Excercises!!
 
-* [Rest can be reactive, too](ReactiveREST.md)
-* [Rest can be reactive, too](ReactiveTransformation.md)
+* [REST can be reactive, too](ReactiveREST.md)
+* [Reactive operations can flow both ways](ReactiveEventSource.md)
+* [Reactive Operations](ReactiveTransformation.md)
 
 
 ## About the VM

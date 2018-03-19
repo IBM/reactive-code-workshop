@@ -6,7 +6,11 @@ There are some [containers running in the background](README.md#about-chirper) o
 
 To start, we'll need some users! Adding users to the Chirper service is a simple REST call (Java-like pseudo-code here):
 
+      @GET("/api/users/{id}")
       User getUser(String userId);
+
+      @POST("/api/users")
+      void createUser(User user);
 
 A User looks like this (JSON):
 
@@ -16,7 +20,12 @@ A User looks like this (JSON):
         "friends": ["string3"]
       }
 
-So, let us go forth and add some users, in two ways:
+We also need to add friends, like so:
 
-* [RxJava]()
+      @POST("/api/users/{id}/friends")
+      void addFriend(String userId);
+
+So, let us go forth and add some users (and their friends), in two ways:
+
+* [RxJava](https://github.com/ebullient/rxjava2-chirper-client#rest-can-be-reactive-too)
 * [Akka]()

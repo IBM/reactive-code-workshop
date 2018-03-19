@@ -20,3 +20,20 @@ for x in reactive-code-workshop akka-streams-chirper-client rxjava2-chirper-clie
   git reset --hard origin/master
   cd ~
 done
+
+# build things  (yes, two loops, one is faster)
+cd ~
+for x in reactive-code-workshop akka-streams-chirper-client rxjava2-chirper-client webflux-chirper-client wallet-exercise; do
+  echo "
+
+  Building $x"
+  cd $x
+
+  if [ -f pom.xml ]; then
+    mvn package
+  elif [ -f build.sbt ]; then
+    sbt compile
+  fi
+
+  cd ~
+done
