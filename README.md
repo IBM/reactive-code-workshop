@@ -6,8 +6,11 @@ Think 2018: Reactive Java? Let us count the ways!
 - [About the Lab](#about-the-lab)
 - [Let's get started](#lets-get-started)
 - [Reactive Concepts](#reactive-concepts)
+- [Excercises!!](#excercises)
 - [About the VM](#about-the-vm)
   - [Using Skytap](#using-skytap)
+- [About chirper](#about-chirper)
+- [References](#references)
 - [Contacts](#contacts)
 
 <!-- /TOC -->
@@ -19,7 +22,7 @@ We hope to help you "count the ways" in which you can write reactive application
 We have divided this lab into a few parts:
 
 * An overview of reactive programming concepts (15 min)
-* A set of programming exercises: (3, 20 min each)
+* A set of programming exercises:
   - We'll describe each exercise
   - You will complete the exercise using RxJava
   - You will complete the exercise using Akka
@@ -46,14 +49,16 @@ Reactive programming
   * Logic and dataflow management
     - Reactive streams
     - ReactiveX: Observables, Flowables
-  * [MARBLES](https://medium.com/@jshvarts/read-marble-diagrams-like-a-pro-3d72934d3ef5)
-  *
 
 Reactive systems
 
   * Event driven
   *
 
+## Excercises!!
+
+* [Rest can be reactive, too](ReactiveREST.md)
+* [Rest can be reactive, too](ReactiveTransformation.md)
 
 
 ## About the VM
@@ -81,6 +86,16 @@ Tips:
 * To copy from the Skytap VM into your laptop, right click in the VM to copy the content, go to the top clipboard icon and then copy the content again. This will add the content into your laptop's cut/paste buffer.
 
 [Skytap help: Accessing VMs with your browser](https://help.skytap.com/VMClient.html)
+
+## About chirper
+
+This lab relies on a [variant](https://github.com/ebullient/lagom-java-chirper-example) of the [Lagom Chirper Example](https://github.com/lagom/lagom-java-chirper-example), which is running in the background of your VM. Our variant relies on Docker Compose to remove as many moving parts as possible, and to trim the footprint on the VM. There are two aliases we use to work with this background system: `think-compose` and `think-run`. See the `~/lagom-java-chirper-example` directory if you're curious.
+
+## References
+
+* Marble diagrams
+  - https://medium.com/@jshvarts/read-marble-diagrams-like-a-pro-3d72934d3ef5
+  - http://reactivex.io/documentation/observable.html
 
 
 ## Contacts
