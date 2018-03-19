@@ -1,7 +1,5 @@
 # Reactive Transformation
 
-[Back to Reactive Rest](ReactiveREST.md)
-
 You've now seen that you can make a RESTful method request using some Reactive method calls, but.. why? What did we achieve that was better than pick-your-favorite-REST-library?
 
 Let's poke a stick at what we can do now.
@@ -17,3 +15,6 @@ So, let us go forth and chirp many times, in two ways:
 
 * [RxJava](https://github.com/ebullient/rxjava2-chirper-client#reactive-transformation)
 * [Akka]()
+
+Back to [Reactive Events](ReactiveEventSource.md)  
+Onward to [Coda](README.md#in-summary)

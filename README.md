@@ -5,7 +5,9 @@
 - [About the Lab](#about-the-lab)
 - [Let's get started](#lets-get-started)
 - [Reactive Concepts](#reactive-concepts)
+- [Marble diagrams](#marble-diagrams)
 - [Excercises!!](#excercises)
+- [In summary](#in-summary)
 - [About the VM](#about-the-vm)
   - [Using Skytap](#using-skytap)
 - [About chirper](#about-chirper)
@@ -68,8 +70,12 @@ In the case above, the top line is the sequence of items emitted by the original
 ## Excercises!!
 
 * [REST can be reactive, too](ReactiveREST.md)
-* [Reactive operations can flow both ways](ReactiveEventSource.md)
+* [Reactive Events](ReactiveEventSource.md)
 * [Reactive Operations](ReactiveTransformation.md)
+
+
+## In summary
+
 
 
 ## About the VM
