@@ -37,3 +37,11 @@ for x in reactive-code-workshop akka-streams-chirper-client rxjava2-chirper-clie
 
   cd ~
 done
+
+# Double check our containers
+cd lagom-java-chirper-example
+sbt -DbuildTarget=compose clean docker:publishLocal
+think-run stop 
+think-run start
+think-run wait
+cd ~

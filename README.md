@@ -65,7 +65,7 @@ Love them or hate them, when you talk about reactive programming, you're going t
 
 These diagrams are used to represent an `Observable` and how data is changed by operations on it. Try to read them from left to right (as a time series), with items from the top line being munged/mangled/transformed on their way to the subscriber via the bottom line.
 
-In the case above, the top line is the sequence of items emitted by the original `Observable` (a finite number, as it happens). A `flip` operation is being performed on the items emitted by the `Observable`, such that the subscriber will see only the items (shapes in our case) as they are oriented on the bottom line.
+In the case above, the top line is the sequence of items emitted by the original `Observable` (a finite number, as it happens). A `flip` operation is being performed on the items emitted by the `Observable`, such that the subscriber will see the items (shapes in our case) in the orientation shown on the bottom line.
 
 ## Excercises!!
 
@@ -76,7 +76,7 @@ In the case above, the top line is the sequence of items emitted by the original
 
 ## In summary
 
-
+Even though we only scratched the surface, we hope you have a better idea of the problems reactive programming intends to solve, and the similarities and differences in approach provided by different tools and frameworks.
 
 ## About the VM
 

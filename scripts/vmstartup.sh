@@ -50,11 +50,13 @@ if ! grep "deploy/compose/run.sh env" ~/.bashrc; then
 fi
 
 # Start chirper in the background
+cd lagom-java-chirper-example
 think-compose pull
 think-compose build proxy
 sbt -DbuildTarget=compose clean docker:publishLocal
 think-run start
 think-run wait
+cd ~
 
 # clean up old images
 docker system prune -f
