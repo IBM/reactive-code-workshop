@@ -10,11 +10,11 @@ To start, we'll need some users! Adding users to the Chirper service is a simple
 
 A User looks like this (JSON):
 
-{
-  "userId": "String",
-  "name": "String",
-  "friends": ["String"]
-}
+      {
+        "userId": "string1",
+        "name": "string2",
+        "friends": ["string3"]
+      }
 
 So, let us go forth and add some users, in two ways:
 
