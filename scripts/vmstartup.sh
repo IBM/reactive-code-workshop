@@ -20,6 +20,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install --lts
 
+
 # update existing github repos to ebullient fork
 cd ~
 for x in lagom-java-chirper-example rxjava2-chirper-client webflux-chirper-client; do
@@ -30,8 +31,9 @@ for x in lagom-java-chirper-example rxjava2-chirper-client webflux-chirper-clien
   cd ~
 done
 
-# Update directories for newer projects
+# Update directories for new projects
 for x in wallet-exercise akka-streams-chirper-client; do
+  echo "Updating $x" >> ~/.workshop-log.txt
   if [ -d ~/$x ]; then
     cd ~/$x
     git fetch --all
