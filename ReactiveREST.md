@@ -28,7 +28,7 @@ We also need to add friends, like so:
 So, let us go forth and add some users (and their friends), in two ways:
 
 * [RxJava](https://github.com/ebullient/rxjava2-chirper-client#rest-can-be-reactive-too)
-* [Akka]()
+* [Akka](akka/ReactiveREST.md)
 
 Back to [the top](README.md)  
 Onward to [Reactive Events](ReactiveEventSource.md)

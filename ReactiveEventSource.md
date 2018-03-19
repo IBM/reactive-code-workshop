@@ -24,8 +24,8 @@ The timestamp and UUID are optional, and will be supplied by the server if we do
 
 So, let us go forth and chirp many times, in two ways:
 
-* [RxJava](https://github.com/ebullient/rxjava2-chirper-client#reactive-transformation)
-* [Akka]()
+* [RxJava](https://github.com/ebullient/rxjava2-chirper-client#reactive-event-source)
+* [Akka](akka/ReactiveEventSource.md)
 
 Back to [REST can be reactive, too](ReactiveREST.md) 
 Onward to [Reactive Operations](ReactiveTransformation.md)
