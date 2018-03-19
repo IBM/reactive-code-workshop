@@ -53,5 +53,5 @@ Take a guess...and update the return from null to what you think it should be.
 
 *Hint, look at the name of the message and the function. You will need to run one flow via the other*
 
-Back to [REST can be reactive, too](ReactiveREST.md) 
-Onward to [Reactive Operations](ReactiveTransformation.md)
+Back to [REST can be reactive, too](../ReactiveREST.md) 
+Onward to [Reactive Operations](../ReactiveTransformation.md)
