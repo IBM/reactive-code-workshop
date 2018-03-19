@@ -43,5 +43,5 @@ Find method
         private Flow<Message, Entity.Chirp, NotUsed> messageToChirpFlow()
 
   
-Back to [Reactive Events](ReactiveEventSource.md)  
-Onward to [Coda](README.md#in-summary)
+Back to [Reactive Events](../ReactiveEventSource.md)  
+Onward to [Coda](../README.md#in-summary)
