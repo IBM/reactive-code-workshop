@@ -52,7 +52,18 @@ Reactive programming
 Reactive systems
 
   * Event driven
-  *
+
+
+## Marble diagrams
+
+Love them or hate them, when you talk about reactive programming, you're going to see a lot of these:
+
+![Reactive Marble diagram, from http://reactivex.io/documentation/observable.html](RxMarbleDiagram.png)
+
+
+These diagrams are used to represent an `Observable` and how data is changed by operations on it. Try to read them from left to right (as a time series), with items from the top line being munged/mangled/transformed on their way to the subscriber via the bottom line.
+
+In the case above, the top line is the sequence of items emitted by the original `Observable` (a finite number, as it happens). A `flip` operation is being performed on the items emitted by the `Observable`, such that the subscriber will see only the items (shapes in our case) as they are oriented on the bottom line.
 
 ## Excercises!!
 
@@ -63,7 +74,7 @@ Reactive systems
 
 ## About the VM
 
-The lab will use a Skytap-hosted virtual machine (VM), which will contain all necessary artifacts for the lab. The Skytap VM features Ubuntu 16.04.3 LTS (xenial) as the operating system and has the following software installed:
+The lab uses a Skytap-hosted virtual machine (VM), which contains all necessary artifacts for the lab. The Skytap VM features Ubuntu 16.04.3 LTS (xenial) as the operating system and has the following software installed:
 
 * git 2.7.4
 * sbt 0.13.16
@@ -72,7 +83,7 @@ The lab will use a Skytap-hosted virtual machine (VM), which will contain all ne
 * VS Code 1.21.1
 * Docker 17.12.0-ce
 
-This VM will update itself on launch, and will start the Lagom Chirper example service in the background (care of this fork: https://github.com/ebullient/lagom-java-chirper-example/blob/master/README.md). We will use the Chirper example as a source of events for this lab.
+This VM will update itself on launch, and will start the [Lagom Chirper example service](#about-chirper) in the background.
 
 ### Using Skytap
 
