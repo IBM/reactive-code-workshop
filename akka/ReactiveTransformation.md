@@ -1,5 +1,17 @@
 # Kept Live Web Socket Example
 
+### Resume sbt 
+
+Open VS Code  
+Find the `akka-streams-chirper-client` folder
+
+sbt should still be running in the Terminal window for the akka exercises 
+
+        > nextExercise
+        > pollSolution
+        > reload
+        > man e 
+
 ## Description
 
 In this final Akka Http part, we will be showing connecting to a live socket that stays open to keep getting chirps. 

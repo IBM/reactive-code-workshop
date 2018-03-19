@@ -1,8 +1,21 @@
 # Getting Chirp History from Users
 
+### Resume sbt 
+
+Open VS Code  
+Find the `akka-streams-chirper-client` folder
+
+sbt should still be running in the Terminal window for the akka exercises 
+
+        > nextExercise
+        > pollSolution
+        > reload
+        > man e 
+
 ## Description
 This is an example of consuming a stream of data from a service, connecting via 
 web sockets. In this exercise, we will take a look at what
+
 
 Locate the method 
 

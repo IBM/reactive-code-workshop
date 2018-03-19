@@ -25,7 +25,18 @@ main is trying to get users before they are added.
 
 Let's fix adding users, but first, about building requests.
 
+### Step 0
+
+Open VS Code  
+Find the `akka-streams-chirper-client` folder
+
+Open a Terminal window  
+
+        $ cd ~/akka-streams-chirper-client
+        $ sbt 
+
 ### Step 1.a - building http requests
+
 Locate the method 
 
         private CompletionStage<HttpResponse> get(String uri)
@@ -72,6 +83,8 @@ After this, you should see everything running just fine.
 In order to stop the main, press any key. 
 
 **And that's it! Akka Http client with streams**
+
+**Keep this terminal window open for the next exercise.** Create a new Terminal window for RxJava part 2.
 
 Back to [the top](README.md)  
 Onward to [Reactive Events](ReactiveEventSource.md)
