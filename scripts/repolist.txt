@@ -1,0 +1,5 @@
+https://github.com/ebullient/lagom-java-chirper-example
+https://github.com/ebullient/rxjava2-chirper-client
+https://github.com/ebullient/webflux-chirper-client
+https://github.com/kikiya/wallet-exercise
+https://github.com/kikiya/akka-streams-chirper-client
