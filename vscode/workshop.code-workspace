@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "akka-streams-chirper-client"
+    },
+    {
+      "path": "rxjava2-chirper-client"
+    },
+    {
+      "path": "webflux-chirper-client"
+    },
+    {
+      "path": "wallet-exercise"
+    }
+  ],
+  "settings": {}
+}
