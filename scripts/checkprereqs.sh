@@ -38,3 +38,4 @@ testCommand fish --version
 testCommand git --version
 testCommand java -version
 testCommand docker -v
+testCommand docker-compose -version
