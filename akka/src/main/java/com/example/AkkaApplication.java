@@ -33,7 +33,7 @@ public class AkkaApplication {
     }
 
     private void run() throws Exception{
-        dumpSourceToStdOut(demoInts().map( i-> "Int "+i));
+        dumpSourceToStdOut(demoStrings());
     }
 
     public static void main(String[] args) throws Exception{
