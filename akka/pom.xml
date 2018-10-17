@@ -40,6 +40,12 @@
 			<artifactId>akka-stream_2.12</artifactId>
 			<version>2.5.17</version>
 		</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
 	</dependencies>
 
 	<build>
@@ -53,7 +59,6 @@
 					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -72,4 +77,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
