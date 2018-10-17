@@ -9,4 +9,3 @@ A simple base project to allow exploration of Akka
 ## Running
 
 `mvn exec:java`
-

@@ -18,5 +18,9 @@ trim_trailing_whitespace = false
 [*.java]
 indent_size = 4
 
-[*.{html,js,rb,css,xml,sh,yaml,yml}]
+[*.xml]
+indent_style = tab
+indent_size = 2
+
+[*.{html,js,rb,css,sh,yaml,yml}]
 indent_size = 2

@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>RxWorkshop</name>
+	<name>WebFlux Workshop</name>
 	<description>Demo project for Reactive Workshop</description>
 
 	<parent>
