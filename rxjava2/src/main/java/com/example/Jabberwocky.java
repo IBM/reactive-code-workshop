@@ -52,6 +52,10 @@ public class Jabberwocky {
         return Arrays.asList(jabberwocky.split("\\s+"));
     }
 
+    public static List<String> lines() {
+        return Arrays.asList(jabberwocky.split("\\n"));
+    }
+
     public static void tryToClose(Closeable c) {
         if ( c != null ) {
             try {

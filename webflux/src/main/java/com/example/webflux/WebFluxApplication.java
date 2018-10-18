@@ -1,38 +1,39 @@
 package com.example.webflux;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import org.springframework.context.annotation.Bean;
-import reactor.core.publisher.Flux;
 
+import reactor.core.publisher.Flux;
 
 @SpringBootApplication
 public class WebFluxApplication {
-    static Flux<String> fallback = Flux.just("This","is","just","an","example");
 
-    private Flux<String> demoStrings(){
-        return Flux.using(
-            () -> Jabberwocky.getReader(),
-            reader -> Flux.fromIterable(() -> reader.lines().iterator()),
-            reader -> Jabberwocky.tryToClose(reader) // must handle the IOException in WebFlux
-        ).onErrorResume(throwable -> fallback);
+    private Flux<String> lines(){
+        return Flux.fromIterable(() -> Jabberwocky.lines().iterator());
     }
 
-    private Flux<Integer> demoInts(){
-       return Flux.range(0,100);
+    private Flux<String> words(){
+        return Flux.fromIterable(() -> Jabberwocky.words().iterator());
     }
 
     private void dumpFluxToStdOut(Flux<String> f){
         f.subscribe(s->System.out.println(s));
     }
 
+    private List<String> getAsList(Flux<String> f) {
+        return f.collectList().block();
+    }
+
     @Bean
     public CommandLineRunner myCommandLineRunner() {
         return args -> {
-            Flux<String> output = demoStrings();
+            Flux<String> output = lines();
             dumpFluxToStdOut(output);
         };
     }
@@ -42,5 +43,18 @@ public class WebFluxApplication {
         // prevent SpringBoot from starting a web server
         app.setWebApplicationType(WebApplicationType.NONE);
         app.run(args);
+    }
+
+    /**
+     * .doOnNext(getDebugConsumer())
+     * @return a debug consumer that prints the element it is passed
+     */
+    private <T> Consumer<T> getDebugConsumer() {
+        return new Consumer<T>() {
+            @Override
+            public void accept(T t) {
+                System.out.println(t);
+            }
+        };
     }
 }

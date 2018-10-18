@@ -13,14 +13,13 @@ import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
 
 public class AkkaApplication {
-    Stream<String> jabberwocky = Jabberwocky.getReader().lines();
 
-    private Source<String,NotUsed> demoStrings(){
-        return Source.fromIterator(() -> jabberwocky.iterator());
+    private Source<String,NotUsed> lines() {
+        return Source.fromIterator(() -> Jabberwocky.lines().iterator());
     }
 
-    private Source<Integer,NotUsed> demoInts(){
-        return Source.range(0,100);
+    private Source<String,NotUsed> words() {
+        return Source.fromIterator(() -> Jabberwocky.words().iterator());
     }
 
     private void dumpSourceToStdOut(Source<?,NotUsed> src) throws InterruptedException, ExecutionException {
@@ -28,21 +27,26 @@ public class AkkaApplication {
         final Materializer materializer = ActorMaterializer.create(system);
 
         final CompletionStage<Done> done = src.runWith(Sink.foreach(a -> System.out.println(a)),materializer);
-
-        done
-        .thenRun(()->system.terminate())
-        .thenRun(()->jabberwocky.close());
+        done.thenRun(()->system.terminate());
 
         // Make it happen
         done.toCompletableFuture().get();
     }
 
-    private void run() throws Exception{
-        dumpSourceToStdOut(demoStrings());
+    private void run() throws Exception {
+        dumpSourceToStdOut(lines());
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         AkkaApplication app = new AkkaApplication();
         app.run();
-      }
+    }
+
+    /**
+     * .alsoTo(getDebugSink())
+     * @return a sink that prints all elements it has been passed
+     */
+    private <T> Sink<T,CompletionStage<Done>> getDebugSink() {
+        return Sink.foreach(t -> System.out.println(t));
+    }
 }
