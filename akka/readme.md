@@ -51,7 +51,7 @@ At the end of each step, you should use `dumpSourceToStdOut` to print the result
 #### 2a. Make lots of observables
 
 1. process of stream of lines to split into words `Source<String[],NotUsed>`
-2. process stream of lines into `Source<Observable<String>>` of words
+2. process stream of lines into `Source<Source<String,NotUsed>,NotUsed>` of words
 
 #### 2b. Collapse lots of observables back together
 
