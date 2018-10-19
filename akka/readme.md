@@ -55,7 +55,7 @@ At the end of each step, you should use `dumpSourceToStdOut` to print the result
 
 #### 2b. Collapse lots of observables back together
 
-Make `dumpObservableToStdOut` print individual words again.
+Make `dumpSourceToStdOut` print individual words again.
 
 1. Use `flatMapConcat` or `flatMapMerge` to recombine list from step 1 above
 2. Use `flatMapConcat` or `flatMapMerge` to process list from step 2 above
