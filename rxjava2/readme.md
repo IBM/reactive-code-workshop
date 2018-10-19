@@ -22,7 +22,7 @@ $ java -jar target/rxjava-base-1.0-SNAPSHOT.jar
 Yay for tabbed browsers!
 
 * [ReactiveX Operators](http://reactivex.io/documentation/operators.html)
-* [RxJava2 Observable Javadoc](http://reactivex.io/RxJava/2.x/javadoc/2.0.8/io/reactivex/Observable.html#reduce(io.reactivex.functions.BiFunction))
+* [RxJava2 Observable Javadoc](http://reactivex.io/RxJava/2.x/javadoc/2.0.8/io/reactivex/Observable.html)
 
 ## Exercises
 
