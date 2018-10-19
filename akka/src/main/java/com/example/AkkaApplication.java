@@ -34,7 +34,8 @@ public class AkkaApplication {
     }
 
     private void run() throws Exception {
-        dumpSourceToStdOut(lines());
+        Source<String, NotUsed> src = lines();
+        dumpSourceToStdOut(src);
     }
 
     public static void main(String[] args) throws Exception {
