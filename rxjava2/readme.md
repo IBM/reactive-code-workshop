@@ -78,8 +78,9 @@ Start with stream of (optionally lowercase, punctuation-free) words:
 
 1. Use `map` make a stream of string lengths
 2. Use `zipWith` to combine streams (lengths and words) into `Observable<Pair>`
-3. Use `flatMap` to show group conents as single `Observable<String>`
+3. Use `map` to show pairs as single `Observable<String>`, e.g. "length: string"
 4. ***Optional***
     * Use `groupBy` to group `Observable<Pair>` by length
+    * Use `flatMap` to show content as single as single `Observable<String>`, e.g. "length: string"
 5. ***Really Really Optional***
     * What happens if you use `concatMap` instead of `flatMap`? Why?
