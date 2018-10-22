@@ -24,7 +24,9 @@ public final class RxApplication {
     }
 
     private void run(){
+        // This is the starting example
         Observable<String> result = lines();
+        // This will both _subscribe_ to the observable, and emit the result
         dumpObservableToStdOut(result);
     }
 

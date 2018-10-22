@@ -26,30 +26,60 @@ Yay for tabbed browsers!
 
 ## Exercises
 
-Your goal for each section is to achieve the required bits in the time allotted (for the lab). Do the extras if you finish early, or on your own time later (we hope you get as obsessed with doing them as we did).
+We will be exploring reactive concepts by playing with Observable Operator composition.
 
-At the end of each step, you should use `dumpObservableToStdOut` to print the result. In some cases, this will need some type munging to get back to the right type; this is intentional, but here are some hints:
+Open `src/main/java/com/example/RxApplication.java` in your IDE. We will edit the `run()` method to mess about with Observables and Operators.
+
+### Goal
+
+Complete as many of the steps within each Exercise as you can within the time alloted.
+
+* Steps within an exercise are related (later steps often require earlier steps, e.g.)
+* At the end of each step, use `dumpObservableToStdOut` to print the result.
+**This will need some type munging**; this is intentional.
+
+### Hints
 
 * Use `.doOnNext(getDebugConsumer())` between operations if you get confused.
 * A cheap way to convert something to a string is with `.map(x -> "" + x)`
 
 ### Exercise 1: map, filter, merge
 
-1. process stream of words: make them all lowercase and remove all punctuation (`[^a-zA-Z]`).
-2. apply `filter` create stream of words beginning with 'b'
-3. create a second stream of words beginning with 'g'
-4. merge the two streams
+Start with stream of `words()`:
+
+1. Use `map` to make all words lowercase and remove all punctuation (`[^a-zA-Z]`). 
+
+    For example, in `src/main/java/com/example/RxApplication.java`, edit the `run()` and add the following:
+
+    ```java
+        // Exercise 1:
+        Observable<String> ex_1_1 = words()
+            .map(word -> word.toLowerCase().replaceAll("^[a-zA-Z]",""));
+        dumpObservableToStdOut(ex_1_1);
+    ```
+
+    Use ` mvn package exec:exec` from the command line to rebuild and run (run inside your IDE of choice if you prefer). The poem Jabberwocky should now be followed by a list of punctuation-free, lower case words. If so, carry on and see how far you can get (use hints above and listed references), **stop before Exercise 2**.
+
+    If you are stuck, ask for help. ;)
+
+2. Apply `filter` create stream of words beginning with `b`
+3. Create a second stream of words beginning with `g`
+4. `merge` the two streams
 5. ***Optional: distinct, scan***
     * replace all words in the two current streams with their lengths.
-    * use `scan` to find the number of chars in words starting 'b'
-    * use `scan` to find the number of chars in `distinct` words starting 'g'
-6. ***Really Really Optional: count***
-    * `count` all 'b' words
-    * `count` `distinct` 'g' words
+    * use `scan` to find the number of chars in words starting `b`
+    * use `scan` to find the number of chars in `distinct` words starting `g`
+6. ***Really really optional: count***
+    * `count` all `b` words
+    * `count` `distinct` `g` words
+
+    Note: If you try these, you'll notice that count produces an incompatible type for `dumpObservableToStdOut`, which means you'll need to find another way to subscribe to that observable to see what happens.
 
 ### Exercise 2: nested observables and substreams
 
 #### 2a. Make lots of observables
+
+Start with stream of `lines()`:
 
 1. process of stream of lines to split into words `Observable<String[]>`
 2. process stream of lines into `Observable<Observable<String>>` of words
@@ -59,17 +89,17 @@ At the end of each step, you should use `dumpObservableToStdOut` to print the re
 Make `dumpObservableToStdOut` print individual words again.
 
 1. Use `flatMap` to recombine list from step 1 above
-2. Use `flatMap` to process list from step 2 above
+2. Use `flatMap` to recombine list from step 2 above
 
 #### 2c. Group lots of observables
 
-Start with stream of (optionally lowercase, punctuation-free) words:
+Start with stream of (optionally lowercase, punctuation-free) `lines()`:
 
 1. Use `groupBy` to group words by first letter
 2. Use `flatMap` to re-merge: observe order of words
 3. ***Optional: distinct***
     * Include only `distinct` words
-4. ***Really Really Optional***
+4. ***Really really optional***
     * `count` how many words are in each group
 
 #### 2d. Controlled collapse
@@ -82,5 +112,5 @@ Start with stream of (optionally lowercase, punctuation-free) words:
 4. ***Optional***
     * Use `groupBy` to group `Observable<Pair>` by length
     * Use `flatMap` to show content as single as single `Observable<String>`, e.g. "length: string"
-5. ***Really Really Optional***
+5. ***Really really optional***
     * What happens if you use `concatMap` instead of `flatMap`? Why?
