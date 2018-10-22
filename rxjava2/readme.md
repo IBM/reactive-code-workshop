@@ -32,7 +32,7 @@ Open `src/main/java/com/example/RxApplication.java` in your IDE. We will edit th
 
 ### Goal
 
-Complete as many of the steps within each Exercise as you can within the time alloted.
+Complete as many of the steps within each Exercise as you can within the time allotted.
 
 * Steps within an exercise are related (later steps often require earlier steps, e.g.)
 * At the end of each step, use `dumpObservableToStdOut` to print the result.
@@ -47,7 +47,7 @@ Complete as many of the steps within each Exercise as you can within the time al
 
 Start with stream of `words()`:
 
-1. Use `map` to make all words lowercase and remove all punctuation (`[^a-zA-Z]`). 
+1. Use `map` to make all words lowercase and remove all punctuation (`[^a-zA-Z]`).
 
     For example, in `src/main/java/com/example/RxApplication.java`, edit the `run()` and add the following:
 
@@ -62,13 +62,13 @@ Start with stream of `words()`:
 
     If you are stuck, ask for help. ;)
 
-2. Apply `filter` create stream of words beginning with `b`
+2. Apply `filter` to create a stream of words beginning with `b`
 3. Create a second stream of words beginning with `g`
 4. `merge` the two streams
 5. ***Optional: distinct, scan***
     * replace all words in the two current streams with their lengths.
-    * use `scan` to find the number of chars in words starting `b`
-    * use `scan` to find the number of chars in `distinct` words starting `g`
+    * use `scan` to total the number of chars in words starting `b`
+    * use `scan` to total the number of chars in `distinct` words starting `g`
 6. ***Really really optional: count***
     * `count` all `b` words
     * `count` `distinct` `g` words
@@ -79,24 +79,24 @@ Start with stream of `words()`:
 
 #### 2a. Make lots of observables
 
-Start with stream of `lines()`:
+Start with the stream of lines (available from the `lines()` method):
 
-1. process of stream of lines to split into words `Observable<String[]>`
-2. process stream of lines into `Observable<Observable<String>>` of words
+1. split each line in the stream into an array of words. eg. `Observable<String[]>`
+2. split each line in the stream into a stream of words. eg. `Observable<Observable<String>>`
 
 #### 2b. Collapse lots of observables back together
 
-Make `dumpObservableToStdOut` print individual words again.
+Add operators to the stream to allow `dumpObservableToStdOut` to print the individual words again.
 
-1. Use `flatMap` to recombine list from step 1 above
-2. Use `flatMap` to recombine list from step 2 above
+1. Use `flatMap` to convert the stream from step 1 above into a stream of words.
+2. Use `flatMap` to convert the stream from step 2 above into a stream of words.
 
 #### 2c. Group lots of observables
 
-Start with stream of (optionally lowercase, punctuation-free) `lines()`:
+Start with a stream of (optionally lowercase, punctuation-free) `words()`:
 
 1. Use `groupBy` to group words by first letter
-2. Use `flatMap` to re-merge: observe order of words
+2. Use `flatMap` to re-merge the groups so you can output the stream of words. Observe the order of the words!
 3. ***Optional: distinct***
     * Include only `distinct` words
 4. ***Really really optional***
@@ -104,13 +104,13 @@ Start with stream of (optionally lowercase, punctuation-free) `lines()`:
 
 #### 2d. Controlled collapse
 
-Start with stream of (optionally lowercase, punctuation-free) words:
+Start with stream of (optionally lowercase, punctuation-free) `words()`:
 
-1. Use `map` make a stream of string lengths
-2. Use `zipWith` to combine streams (lengths and words) into `Observable<Pair>`
-3. Use `map` to show pairs as single `Observable<String>`, e.g. "length: string"
+1. Use `map` to create a stream of string lengths
+2. Use `zipWith` to combine the two streams (lengths and words) into `Observable<Pair>` (Pair is supplied)
+3. Use `map` to convert pairs to `Observable<String>`, e.g. "length: string"
 4. ***Optional***
     * Use `groupBy` to group `Observable<Pair>` by length
-    * Use `flatMap` to show content as single as single `Observable<String>`, e.g. "length: string"
+    * Use `flatMap` to show result as `Observable<String>`, e.g. "length: string"
 5. ***Really really optional***
     * What happens if you use `concatMap` instead of `flatMap`? Why?

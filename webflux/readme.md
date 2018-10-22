@@ -38,14 +38,14 @@ You'll be doing this work in `com.example.WebFluxApplication#myCommandLineRunner
 
 ### Exercise 1: map, filter, merge
 
-1. process stream of words: make them all lowercase and remove all punctuation (`[^a-zA-Z]`).
-2. apply `filter` create stream of words beginning with 'b'
-3. create a second stream of words beginning with 'g'
+1. process the stream of `words()`: make them all lowercase and remove all punctuation (`[^a-zA-Z]`).
+2. using `filter` create the stream of words beginning with 'b'
+3. create a separate stream of lowercase, punctuation free words beginning with 'g'
 4. `merge` the two streams
 5. ***Optional: distinct, scan***
     * replace all words in the two current streams with their lengths.
-    * use `scan` to find the number of chars in words starting 'b'
-    * use `scan` to find the number of chars in `distinct` words starting 'g'
+    * use `scan` to total the number of chars in words starting 'b'
+    * use `scan` to total the number of chars in `distinct` words starting 'g'
 6. ***Really Really Optional: count***
     * `count` all 'b' words
     * `count` `distinct` 'g' words
@@ -54,22 +54,22 @@ You'll be doing this work in `com.example.WebFluxApplication#myCommandLineRunner
 
 #### 2a. More Flux!
 
-1. process of stream of lines to split into words `Flux<String[]>`
-2. process stream of lines into `Flux<Flux<String>>` of words
+1. process of stream of lines to split into words as `Flux<String[]>`
+2. process of stream of lines to split into words as `Flux<Flux<String>>`
 
 #### 2b. Collapse nested Flux
 
-Make `dumpFluxToStdOut` print individual words again.
+Use `dumpFluxToStdOut` print individual words again.
 
-1. Use `flatMap` to recombine list from step 1 above
-2. Use `flatMap` to process list from step 2 above
+1. Use `flatMap` to recombine stream from step 1 above into `Flux<String>`
+2. Use `flatMap` to recombine stream from step 2 above into `Flux<String>`
 
 #### 2c. GroupedFlux
 
 Start with stream of (optionally lowercase, punctuation-free) words:
 
-1. Use `groupBy` to group words by first letter
-2. Use `flatMap` to re-merge: observe order of words
+1. Use `groupBy` to group by first letter
+2. Use `flatMap` to re-merge observe order of words
 3. ***Optional: distinct***
     * Include only `distinct` words
 4. ***Really Really Optional***
@@ -80,11 +80,11 @@ Start with stream of (optionally lowercase, punctuation-free) words:
 
 Start with stream of (optionally lowercase, punctuation-free) words:
 
-1. Use `map` make a stream of string lengths
-2. Use `zipWith` to combine streams (lengths and words) into `Flux<Tuple2<Integer,String>>`
-3. Use `map` to show tuples as single `Flux<String>`, e.g. "length: string"
+1. Use `map` to create a stream of string lengths
+2. Use `zipWith` to combine the stream of lengths with the original stream of words into `Flux<Tuple2<Integer,String>>`
+3. Use `map` to show tuples as single `Flux<String>` via `dumpFluxToStdOut` (e.g. "length: string")
 4. ***Optional***
     * Use `groupBy` to group `Flux<Tuple2<Integer,String>>` by length
-    * Use `flatMap` to show contents as single `Flux<String>`, e.g. "length: string"
+    * Use `flatMap` and `dumpFluxToStdOut` to show content via `Flux<String>`, e.g. "length: string"
 5. ***Really Really Optional***
     * What happens if you use `concatMap` instead of `flatMap`? Why?

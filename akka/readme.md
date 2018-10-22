@@ -30,25 +30,25 @@ At the end of each step, you should use `dumpSourceToStdOut` to print the result
 * Use `.alsoTo(getDebugSink())` between operations if you get confused.
 * A cheap way to convert something to a string is with `.map(x -> "" + x)`
 
-*Note:* Akka doesn't have `distinct` but maybe you can create your own version. 
+*Note:* Akka doesn't have `distinct` but maybe you can create your own version.
 
 ### Exercise 1: map, filter, merge
 
-1. process stream of words: make them all lowercase and remove all punctuation (`[^a-zA-Z]`).
-2. apply `filter` create stream of words beginning with 'b'
-3. create a second stream of words beginning with 'g'
-4. `merge` the two streams
+1. process the stream of words: make them all lowercase and remove all punctuation (`[^a-zA-Z]`).
+2. `filter` the stream of words to those beginning with 'b'
+3. create a second stream of words containing only those beginning with 'g'
+4. `merge` the two streams into a new stream of words
 5. ***Optional: distinct, scan***
     * replace all words in the two current streams with their lengths.
-    * use `scan` to find the number of chars in words starting 'b'
-    * use `scan` to find the number of chars in `distinct` words starting 'g'
+    * use `scan` to total the number of chars in words starting 'b'
+    * use `scan` to total the number of chars in `distinct` words starting 'g'
 6. ***Really Really Optional: count***
-    * `count` all 'b' words
-    * `count` `distinct` 'g' words
+    * `count` how many words started with 'b'
+    * `count` how many `distinct` words started with 'g'
 
-### Exercise 2: nested observables and substreams
+### Exercise 2: nested sources and substreams
 
-#### 2a. Make lots of observables
+#### 2a. Make lots of things!
 
 1. process of stream of lines to split into words `Source<String[],NotUsed>`
 2. process stream of lines into `Source<Source<String,NotUsed>,NotUsed>` of words
@@ -57,15 +57,15 @@ At the end of each step, you should use `dumpSourceToStdOut` to print the result
 
 Make `dumpSourceToStdOut` print individual words again.
 
-1. Use `flatMapConcat` or `flatMapMerge` to recombine list from step 1 above
-2. Use `flatMapConcat` or `flatMapMerge` to process list from step 2 above
+1. Use `flatMapConcat` or `flatMapMerge` to recombine list from step 1 above into `Source<String,NotUsed>`
+2. Use `flatMapConcat` or `flatMapMerge` to process list from step 2 above into `Source<String,NotUsed>`
 
-#### 2c. Group lots of observables
+#### 2c. Grouping in Akka (subflows)
 
 Start with stream of (optionally lowercase, punctuation-free) words:
 
 1. Use `groupBy` to group words by first letter
-2. Use `mergeSubstreams` to re-merge: observe order of words
+2. Use `mergeSubstreams` to re-merge substreams: observe order of words
 3. ***Optional: distinct***
     * Include only `distinct` words
 4. ***Really Really Optional***
@@ -75,8 +75,8 @@ Start with stream of (optionally lowercase, punctuation-free) words:
 
 Start with stream of (optionally lowercase, punctuation-free) words:
 
-1. Use `map` make a stream of string lengths
-2. Use `zipWith` to combine streams (lengths and words) into `Source<Pair,NotUsed>`
+1. Use `map` to create a stream of string lengths
+2. Use `zipWith` to combine the stream of lengths and stream of words into `Source<Pair,NotUsed>`
 3. Use `map` to convert each pair to a string representation of itself
 3. Use `mergeSubstreams` to show group contents as single `Source<String,NotUsed>`
 4. ***Optional***
