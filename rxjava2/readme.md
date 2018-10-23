@@ -54,7 +54,7 @@ Start with stream of `words()`:
     ```java
         // Exercise 1:
         Observable<String> ex_1_1 = words()
-            .map(word -> word.toLowerCase().replaceAll("^[a-zA-Z]",""));
+            .map(word -> word.toLowerCase().replaceAll("[^a-zA-Z]",""));
         dumpObservableToStdOut(ex_1_1);
     ```
 
