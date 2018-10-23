@@ -20,6 +20,7 @@ This will download all dependencies, and do some quick verification to ensure yo
 Come prepared with the Java IDE of your choice: Eclipse, IntelliJ, VSCode, emacs or vi if you must.
 
 **See you on Tuesday!**  
+
 Oracle Code One 2018  -- BYOL [HOL5361]  
 Oct 23, 9:00 a.m. - 11:00 a.m. | Moscone West - Overlook 2A (HOL)
 
