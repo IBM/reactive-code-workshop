@@ -380,7 +380,7 @@ Akka focuses on how messages flow
 
 ```java
 Source<String,NotUsed> fixedWords = words()
-    .map(word -> word.toLowerCase().replaceAll("^[a-zA-Z]",""));
+    .map(word -> word.toLowerCase().replaceAll("[^a-zA-Z]",""));
 Source<String> bwords = fixedWords.
     .filter(word -> word.startsWith("b");
 Source<String> gwords = fixedWords.
