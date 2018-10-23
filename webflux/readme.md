@@ -69,7 +69,7 @@ Use `dumpFluxToStdOut` print individual words again.
 Start with stream of (optionally lowercase, punctuation-free) words:
 
 1. Use `groupBy` to group by first letter
-2. Use `flatMap` to re-merge observe order of words
+2. Use `flatMap` to re-merge: observe order of words
 3. ***Optional: distinct***
     * Include only `distinct` words
 4. ***Really Really Optional***
