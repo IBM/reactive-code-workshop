@@ -359,16 +359,6 @@ Source<Source<String,NotUsed>,NotUsed> srcResult = filtered
 1. `flatMapConcat` an array
 2. `flatMapConcat` a stream of streams
 </script></section><section data-markdown><script type="text/template">
-#### Akka: Exercise 2b -- Checkpoint
-
-```java
-Source<String,NotUsed> awords = arrResult
-    .map(x->Source.from(Arrays.asList(x)))
-    .flatMapConcat(src-> src);
-Source<String,NotUsed> swords = srcResult
-    .flatMapConcat(src-> src);
-```
-</script></section><section data-markdown><script type="text/template">
 ### `flatMapConcat` operator
 
 <small>A "Flattening" operator</small>
@@ -378,17 +368,14 @@ Source<String,NotUsed> swords = srcResult
 
 <small>https://doc.akka.io/docs/akka/current/stream/stream-substream.html</small>
 </script></section><section data-markdown><script type="text/template">
-### Akka: Exercise 2c
-
-1. `groupBy` to group by first letter (first arg is max group count!)
-2. `mergeSubstream`s (NOT flatMap!!) to merge substreams
-</script></section><section data-markdown><script type="text/template">
-#### Akka: Exercise 2c -- Checkpoint
+#### Akka: Exercise 2b -- Checkpoint
 
 ```java
-Source<String,NotUsed> words()
-    .groupBy(26, word -> word.charAt(0))
-    .mergeSubstreams();
+Source<String,NotUsed> awords = arrResult
+    .map(x->Source.from(Arrays.asList(x)))
+    .flatMapConcat(src-> src);
+Source<String,NotUsed> swords = srcResult
+    .flatMapConcat(src-> src);
 ```
 </script></section><section data-markdown><script type="text/template">
 ### `groupBy` operator
@@ -404,6 +391,19 @@ Source<String,NotUsed> words()
 
 ![groupBy operator](akka-groupBy-mergeSubstream.png)
 <small>https://doc.akka.io/docs/akka/current/stream/stream-substream.html</small>
+</script></section><section data-markdown><script type="text/template">
+### Akka: Exercise 2c
+
+1. `groupBy` to group by first letter (first arg is max group count!)
+2. `mergeSubstream`s (NOT flatMap!!) to merge substreams
+</script></section><section data-markdown><script type="text/template">
+#### Akka: Exercise 2c -- Checkpoint
+
+```java
+Source<String,NotUsed> words()
+    .groupBy(26, word -> word.charAt(0))
+    .mergeSubstreams();
+```
 </script></section><section data-markdown><script type="text/template">
 ### Akka: Exercise 2d
 
