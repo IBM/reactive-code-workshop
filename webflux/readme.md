@@ -88,3 +88,7 @@ Start with stream of (optionally lowercase, punctuation-free) words:
     * Use `flatMap` and `dumpFluxToStdOut` to show content via `Flux<String>`, e.g. "length: string"
 5. ***Really Really Optional***
     * What happens if you use `concatMap` instead of `flatMap`? Why?
+
+## Other References
+
+[WebFlux RestController](https://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html#web-reactive-server-annotation) -- integration of WebFlux with REST API
