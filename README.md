@@ -23,3 +23,34 @@ Come prepared with the Java IDE of your choice: Eclipse, IntelliJ, VSCode, emacs
 Oracle Code One 2018  -- BYOL [HOL5361]  
 Oct 23, 9:00 a.m. - 11:00 a.m. | Moscone West - Overlook 2A (HOL)
 
+## Other Reactive sessions at CodeOne 2018
+
+Tuesday:
+
+* 11:30am - DEV4905: "Go Reactive with Data: Stop Blockages with Spring Data and Reactive NoSQL Dbs"  
+Spring Data & Reactive.
+* 1:30pm - DEV4902: "Full Stack Reactive Java with Reactor and Boot 2"  
+Spring Reactive Overview
+
+Wednesday:
+
+* 10:30am - DEV6262: "Full Stack Reactive with Spring and Angular"  
+  RxJS / Spring Reactive / Angular
+
+* 1130am - DEV5464: "Microprofile Reactive Streams"  
+  Microprofile and Reactive Streams.
+
+* 11:30am - DEV5304: "Fully Reactive: Spring, Kotlin, JavaFX, MongoDB Playing Together"  
+Live coding to implement an app using Spring 5/Reactor/Kotlin/JavaFX
+/REST/MongoDb
+
+Thursday:
+
+* 11am - DEV5306: "Integration Reloaded: Integration Solutions Based on Reactive Principles"   
+Integration Architectures based on reactive principles, such as akka.
+* 12noon - DEV5570: "Get Reactive! Programming, Systems, and Microservices"  
+Origins of reactive java at netflix, vert.x, akka, reactor, and reactive js, with marbles!
+* 12noon - DEV4954: "Be Reactive and Micro with a Microprofile Stack"  
+Microprofile/RxJava/React.js
+* 1pm - DEV5269: "Adventures with Reactive Streams"  
+Deep dive into what it takes to implement Reactive Streams specifications
