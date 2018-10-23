@@ -262,7 +262,7 @@ Observable<String> result = words()
 
 ```java
 Flux<String> fixedWords = words()
-    .map(word -> word.toLowerCase().replaceAll("^[a-zA-Z]",""));
+    .map(word -> word.toLowerCase().replaceAll("[^a-zA-Z]",""));
 Flux<String> bwords = fixedWords.
     .filter(word -> word.startsWith("b");
 Flux<String> gwords = fixedWords.
