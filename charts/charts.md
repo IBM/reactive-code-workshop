@@ -381,11 +381,11 @@ Akka focuses on how messages flow
 ```java
 Source<String,NotUsed> fixedWords = words()
     .map(word -> word.toLowerCase().replaceAll("[^a-zA-Z]",""));
-Source<String> bwords = fixedWords.
+Source<String,NotUsed> bwords = fixedWords.
     .filter(word -> word.startsWith("b");
-Source<String> gwords = fixedWords.
+Source<String,NotUsed> gwords = fixedWords.
     .filter(word -> word.startsWith("g");
-Source<String> result = bwords.merge(gwords);
+Source<String,NotUsed> result = bwords.merge(gwords);
 ```
 
 ---
