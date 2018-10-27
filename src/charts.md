@@ -373,6 +373,7 @@ dumpFluxToStdOut(fluxResult.map(x -> ""+x));
 2. `flatMap` a stream of streams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/webflux#2b-collapse-nested-flux)</small>
+
 --
 
 ### WebFlux: Exercise 2b -- Checkpoint
@@ -584,7 +585,7 @@ dumpSourceToStdOut(swords);
 ### Akka: Exercise 2c
 
 1. `groupBy` to group by first letter (first arg is max group count!)
-2. `mergeSubstream`s (NOT flatMap!!) to merge substreams
+2. `mergeSubstreams` (NOT flatMap!!) to merge substreams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/akka#2c-grouping-in-akka-subflows)</small>
 
