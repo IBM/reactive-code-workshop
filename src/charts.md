@@ -1,40 +1,9 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Reactive Java? Let us count the ways!</title>
-        <link rel="stylesheet" href="css/reveal.css">
-        <link rel="stylesheet" href="css/theme/black.css" id="theme">
+---
+theme: black
+transition: slide
+highlightTheme: solarized-dark
+---
 
-
-        <!-- For syntax highlighting -->
-        <link rel="stylesheet" href="lib/css/solarized-dark.css">
-
-
-
-        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
-        <script>
-          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-        </script>
-
-        <style type="text/css">
-            @page {
-              margin: 0;
-              size: auto;
-            }
-        </style>
-
-        <script>
-         if(window.location.search.match( /print-pdf-now/gi )) {
-           window.print();
-         }
-      </script>
-
-    </head>
-    <body>
-
-        <div class="reveal">
-            <div class="slides"><section  data-markdown><script type="text/template">
 ## Reactive Java? <br />Let us count the ways!
 
 <br />
@@ -42,7 +11,9 @@
 Erin Schnabel<br /><small>@ebullientworks</small>
 
 Ozzy Osborne<br /><small>@ozzydweller</small>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## What is Reactive?
 
 Different way of solving problems
@@ -52,7 +23,9 @@ Different way of solving problems
   * Potentially unbounded
 * Application "reacts" to elements as they arrive
   * Parallel (order not guaranteed)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Reactive Manifesto
 
 * Responsive: rapid and consistent response times
@@ -63,7 +36,9 @@ Different way of solving problems
   * *non-blocking* communication
 
 <small>https://www.reactivemanifesto.org/</small>
-</script></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## Reactive Streams
 
 * A [Publisher](http://www.reactive-streams.org/reactive-streams-1.0.2-javadoc/org/reactivestreams/Publisher.html) provides sequenced elements
@@ -73,7 +48,9 @@ Different way of solving problems
 
 <small>Reactive Streams: http://www.reactive-streams.org/<br/>
 Java 9: java.util.concurrent.Flow</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## "Hot" vs. "Cold" Publisher
 
 * Hot: shared view for all subscribers (multicast)
@@ -81,7 +58,9 @@ Java 9: java.util.concurrent.Flow</small>
 
 * **Cold**: unique view for each subscriber (unicast)
   * No events emitted until there is an subscriber
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## Playing with Operators
 
 Reactive libraries have subtly different terminology
@@ -89,35 +68,49 @@ Reactive libraries have subtly different terminology
 * RxJava
 * Spring WebFlux (Spring 5)
 * Akka
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### Understanding Marble Diagrams
 
 ![Rx Marble Diagram](RxMarbleDiagram.png)
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `map` operator
 
 ![map operator](map.png)
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `filter` operator
 
 ![filter operator](filter.png)
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `merge` operator
 
 ![merge operator](merge.png)
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `scan` operator
 
 ![scan operator](scanSeed.png)
 
 <small>This variation specifies a starting value.</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## Chaining operators
 
 A single operator is not very powerful.
 
 _Operators are **chained** to create more complex solutions._
-</script></section></section><section  data-markdown><script type="text/template">
+
+---
+
 ## ReactiveX
 
 * An _Observable_ emits a sequence of items
@@ -128,7 +121,9 @@ _Operators are **chained** to create more complex solutions._
 
 <small>http://reactivex.io/</small><br />
 <small>RX(JS|.net|Scala|Clojure|Swift|Python|Lua|Ruby|andmore)</small>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## RxJava Exercises
 
 Open the following in your favorite browser:
@@ -141,7 +136,9 @@ Open the following in your favorite browser:
 $ cd rxjava2
 $ mvn package exec:exec
 ```
-</script></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## RxJava: Exercise 1
 
 1. lowercase & strip punctuation using `map`
@@ -150,7 +147,9 @@ $ mvn package exec:exec
 4. merge streams (hint: `mergeWith`)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/rxjava2#exercise-1-map-filter-merge)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### RxJava: Exercise 1 -- Checkpoint
 
 ```java
@@ -169,26 +168,36 @@ dumpObservableToStdOut(gwords);
 Observable<String> result = bwords.mergeWith(gwords);
 dumpObservableToStdOut(result);
 ```
-</script></section></section><section  data-markdown><script type="text/template">
+
+---
+
 ### `groupBy` operator
 
 ![groupBy operator](groupBy.png)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### `flatMap` operator
 
 ![flatMap operator](flatMap.png)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### `zipWith` operator
 
 ![zipWith operator](zip.i.png)
-</script></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## RxJava: Exercise 2a
 
 1. streams of arrays
 2. streams of streams (hint `Observable.fromArray`)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/rxjava2#2a-make-lots-of-observables)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### RxJava: Exercise 2a -- Checkpoint
 
 ```java
@@ -203,14 +212,18 @@ Observable<Observable<String>> sResult = filtered
   .map(line -> Observable.fromArray(line.split(" ")));
 dumpObservableToStdOut(sResult.map(x -> ""+x));
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## RxJava: Exercise 2b
 
 1. `flatMap` an array
 2. `flatMap` a stream of streams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/rxjava2#2b-collapse-lots-of-observables-back-together)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### RxJava: Exercise 2b -- Checkpoint
 
 ```java
@@ -222,14 +235,18 @@ Observable<String> swords = sResult
   .flatMap( obs -> obs );
 dumpObservableToStdOut(swords);
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## RxJava: Exercise 2c
 
 1. `groupBy` to group by first letter
 2. `flatMap` to merge the stream of streams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/rxjava2#2c-group-lots-of-observables)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### RxJava: Exercise 2c -- Checkpoint
 
 ```java
@@ -240,7 +257,9 @@ Observable<String> grouped = words()
 dumpObservableToStdOut(grouped);
 
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## RxJava: Exercise 2d
 
 1. stream of lengths
@@ -248,7 +267,9 @@ dumpObservableToStdOut(grouped);
 3. mapping pairs to string output
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/rxjava2#2d-controlled-collapse)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### RxJava: Exercise 2d -- Checkpoint
 
 ```java
@@ -259,15 +280,19 @@ Observable<String> zipped = words()
   .map( pair -> pair.getA()+": "+pair.getB()); // 3
 dumpObservableToStdOut(zipped);
 ```
-</script></section></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Spring Reactor Core and `WebFlux`
 
 * Reactor is rooted in Reactive Streams
 * API alignment with RxJava where possible
   * **Rx `Observable` -> `Flux`**
-  * **Rx `Single` -> `Mono`**
+  * **Rx `Single` -> `Mono`** 
 * Tight integration with Spring concepts: [WebFlux RestController](https://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html#web-reactive-server-annotation)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## WebFlux Exercises
 
 Open the following in your favorite browser:
@@ -281,7 +306,9 @@ Open the following in your favorite browser:
 $ cd webflux
 $ mvn package spring-boot:run
 ```
-</script></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## WebFlux: Exercise 1
 
 1. lowercase & strip punctuation using `map`
@@ -290,7 +317,9 @@ $ mvn package spring-boot:run
 4. merge streams (hint: `mergeWith`)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/webflux#exercise-1-map-filter-merge)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### WebFlux: Exercise 1 -- Checkpoint
 
 ```java
@@ -309,14 +338,18 @@ dumpFluxToStdOut(gwords);
 Flux<String> result = bwords.mergeWith(gwords);
 dumpFluxToStdOut(result);
 ```
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ## WebFlux: Exercise 2a
 
 1. streams of arrays
 2. streams of streams (hint `Flux.fromArray`)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/webflux#2a-more-flux)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### WebFlux: Exercise 2a -- Checkpoint
 
 ```java
@@ -331,7 +364,9 @@ Flux<Flux<String>> fluxResult = filtered
   .map(line -> Flux.fromArray(line.split(" ")));
 dumpFluxToStdOut(fluxResult.map(x -> ""+x));
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## WebFlux: Exercise 2b
 
 1. `flatMap` an array
@@ -351,14 +386,18 @@ Flux<String> fwords = fluxResult
   .flatMap( flx -> flx );
 dumpFluxToStdOut(fwords);
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## WebFlux: Exercise 2c
 
 1. `groupBy` to group by first letter
 2. `flatMap` to merge the stream of streams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/webflux#2c-groupedflux)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### WebFlux: Exercise 2c -- Checkpoint
 
 ```java
@@ -368,7 +407,9 @@ Flux<String> grouped = words()
   .flatMap( flx -> flx );            // 2
 dumpFluxToStdOut(grouped);
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ## WebFlux: Exercise 2d
 
 1. stream of lengths
@@ -376,18 +417,22 @@ dumpFluxToStdOut(grouped);
 3. mapping pairs to string output (hint, default `Pair` impl!)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/webflux#2d-controlled-collapse)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### WebFlux: Exercise 2d -- Checkpoint
 
 ```java
-Flux<String> zipped = words()
+Flux<String> result = words()
   .map( word -> word.length() )      // 1
   .zipWith( words() )                // 2
   .doOnNext(getDebugConsumer())      // see pairs
   .map( pair -> pair.getT1()+": "+pair.getT2());
-dumpFluxToStdOut(zipped);
+dumpFluxToStdOut(result);
 ```
-</script></section></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Akka
 
 Akka focuses on how messages flow
@@ -398,14 +443,18 @@ Akka focuses on how messages flow
 
 ![Akka shapes](akka-linear-flow.png)
 <small>https://blog.redelastic.com/diving-into-akka-streams-2770b3aeabb0</small>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ### `merge` operator
 
 <small>A "Fan-in" operator</small>
 
 ![merge operator](akka-merge.png)
 <small>https://blog.redelastic.com/diving-into-akka-streams-2770b3aeabb0</small>
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Akka Exercises
 
 Open the following in your favorite browser:
@@ -418,7 +467,9 @@ Open the following in your favorite browser:
 $ cd akka
 $ mvn package exec:java
 ```
-</script></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ### Akka: Exercise 1
 
 1. lowercase & strip punctuation using `map`
@@ -427,7 +478,9 @@ $ mvn package exec:java
 4. merge streams (hint: actually `merge`)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/akka#exercise-1-map-filter-merge)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 #### Akka: Exercise 1 -- Checkpoint
 
 ```java
@@ -446,14 +499,18 @@ dumpSourceToStdOut(gwords);
 Source<String, NotUsed> result = bwords.merge(gwords);
 dumpSourceToStdOut(result);
 ```
-</script></section></section><section ><section data-markdown><script type="text/template">
+
+---
+
 ### Akka: Exercise 2a
 
 1. streams of arrays
 2. streams of streams (hint `Source.from` / `Arrays.asList`)
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/akka#2a-make-lots-of-things)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 #### Akka: Exercise 2a -- Checkpoint
 
 ```java
@@ -468,7 +525,9 @@ Source<Source<String,NotUsed>,NotUsed> srcResult = filtered
   .map(line -> Source.from(Arrays.asList(line.split(" "));
 dumpSourceToStdOut(srcResult.map(x -> ""+x));
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `flatMapConcat` operator
 
 <small>A "Flattening" operator</small>
@@ -477,14 +536,18 @@ dumpSourceToStdOut(srcResult.map(x -> ""+x));
 ![flatMapConcat operator](akka-flatMapConcat2.png)
 
 <small>https://doc.akka.io/docs/akka/current/stream/stream-substream.html</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### Akka: Exercise 2b
 
 1. `flatMapConcat` an array
 2. `flatMapConcat` a stream of streams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/akka#2b-collapse-lots-of-things-back-together)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 #### Akka: Exercise 2b -- Checkpoint
 
 ```java
@@ -497,28 +560,36 @@ Source<String,NotUsed> swords = srcResult
   .flatMapConcat(src-> src);
 dumpSourceToStdOut(swords);
 ```
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `groupBy` operator
 
 <small>A "Nesting" operator</small>
 
 ![groupBy operator](akka-groupBy.png)
 <small>https://doc.akka.io/docs/akka/current/stream/stream-substream.html</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### `mergeSubstreams` operator
 
 <small>A "Nesting" operator</small>
 
 ![groupBy operator](akka-groupBy-mergeSubstream.png)
 <small>https://doc.akka.io/docs/akka/current/stream/stream-substream.html</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### Akka: Exercise 2c
 
 1. `groupBy` to group by first letter (first arg is max group count!)
 2. `mergeSubstream`s (NOT flatMap!!) to merge substreams
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/akka#2c-grouping-in-akka-subflows)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 #### Akka: Exercise 2c -- Checkpoint
 
 ```java
@@ -530,7 +601,9 @@ dumpSourceToStdOut(grouped);
 ```
 
 <small>Something different happens when you view the grouped elements with akka</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 ### Akka: Exercise 2d
 
 1. Use `map` to create a stream of string lengths
@@ -538,7 +611,9 @@ dumpSourceToStdOut(grouped);
 3. Use `map` to show group contents as single `Source<String,NotUsed>`, e.g. "length: string"
 
 <small>more details in the [readme](https://github.com/IBM/reactive-code-workshop/tree/master/akka#2d-controlled-collapse)</small>
-</script></section><section data-markdown><script type="text/template">
+
+--
+
 #### Akka: Exercise 2d -- Checkpoint
 
 ```java
@@ -553,7 +628,9 @@ Source<String, NotUsed> result = pairs
   .map(pair -> pair.first() + ": " + pair.second());
 dumpSourceToStdOut(result);
 ```
-</script></section></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Reactive frameworks
 
 * [Lagom](https://www.lagomframework.com/) (Lightbend: Akka and Play)
@@ -563,94 +640,12 @@ dumpSourceToStdOut(result);
 * Standardizing operators
   * [MicroProfile Reactive Streams](https://github.com/eclipse/microprofile-reactive-streams)
   * [https://github.com/reactor/reactive-streams-commons](https://github.com/reactor/reactive-streams-commons) (dormant)
-</script></section><section  data-markdown><script type="text/template">
+
+---
+
 ## Resources
 
 * [Reactive Streams Glossary of Terms](https://github.com/reactive-streams/reactive-streams-jvm/blob/v1.0.1/README.md#glossary)
-* [Reactive Manifesto Glossary of Terms](https://www.reactivemanifesto.org/glossary)
+* [Reactive Manifesto Glossary of Terms](https://www.reactivemanifesto.org/glossary) 
 * [A Journey into Reactive Streams](https://blog.redelastic.com/a-journey-into-reactive-streams-5ee2a9cd7e29) -- Kevin Webber<br />
 A mostly impl neutral overview of Reactive Streams API usage, with diagrams, scenarios etc.. 
-</script></section></div>
-        </div>
-
-        <script src="lib/js/head.min.js"></script>
-        <script src="js/reveal.js"></script>
-
-        <script>
-            function extend() {
-              var target = {};
-              for (var i = 0; i < arguments.length; i++) {
-                var source = arguments[i];
-                for (var key in source) {
-                  if (source.hasOwnProperty(key)) {
-                    target[key] = source[key];
-                  }
-                }
-              }
-              return target;
-            }
-            // Optional libraries used to extend on reveal.js
-            var deps = [
-              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
-              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
-              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-              { src: 'plugin/math/math.js', async: true }
-            ];
-            // default options to init reveal.js
-            var defaultOptions = {
-              controls: true,
-              progress: true,
-              history: true,
-              center: true,
-              transition: 'default',
-              dependencies: deps
-            };
-            // options from URL query string
-            var queryOptions = Reveal.getQueryHash() || {};
-            var options = {
-  "notesSeparator": "note:",
-  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
-  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
-  "theme": "black",
-  "highlightTheme": "solarized-dark",
-  "controls": true,
-  "progress": true,
-  "slideNumber": false,
-  "history": true,
-  "keyboard": true,
-  "overview": true,
-  "center": true,
-  "touch": true,
-  "loop": false,
-  "rtl": false,
-  "shuffle": false,
-  "fragments": true,
-  "embedded": false,
-  "help": true,
-  "showNotes": false,
-  "autoSlide": 0,
-  "autoSlideStoppable": true,
-  "mouseWheel": false,
-  "hideAddressBar": true,
-  "previewLinks": false,
-  "transition": "slide",
-  "transitionSpeed": "default",
-  "backgroundTransition": "default",
-  "viewDistance": 3,
-  "parallaxBackgroundImage": "",
-  "parallaxBackgroundSize": "",
-  "parallaxBackgroundHorizontal": null,
-  "parallaxBackgroundVertical": null,
-  "slideExplorerEnabled": true,
-  "browserPath": null,
-  "attributes": ""
-};
-            options = extend(defaultOptions, options, queryOptions);
-            Reveal.initialize(options);
-
-        </script>
-
-    </body>
-</html>
