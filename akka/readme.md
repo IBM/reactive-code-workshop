@@ -97,8 +97,9 @@ Start with stream of (optionally lowercase, punctuation-free) `words()`:
 
 1. Use `map` to create a stream of string lengths
 2. Use `zipWith` to combine the stream of lengths and stream of words into `Source<Pair,NotUsed>`
-3. Use `mergeSubstreams` to show group contents as single `Source<String,NotUsed>`, e.g. "length: string"
+3. Use `flatMap` to show group contents as single `Source<String,NotUsed>`, e.g. "length: string"
 4. ***Optional***
     * Use `groupBy` to group `Source<Pair,NotUsed>` by length
+    * Recombine the groups with `mergeSubstreams`
 5. ***Really Really Optional***
     * What happens if you use `concatSubstreams` instead of `mergeSubstreams`? Why?
